@@ -13,9 +13,9 @@ export function SiteFooter() {
             staffing, and enterprise technology.
           </p>
           <div className="mt-6 space-y-2 text-sm text-foreground/80">
-            <p className="flex items-center gap-2"><MapPin className="h-4 w-4 text-magenta" /> Valley Stream, New York</p>
-            <p className="flex items-center gap-2"><Mail className="h-4 w-4 text-magenta" /> info@ltuss.com</p>
-            <p className="flex items-center gap-2"><Phone className="h-4 w-4 text-magenta" /> +1 516-240-3877</p>
+            <p className="flex items-center gap-2"><MapPin className="h-4 w-4 text-magenta" /><span>Valley Stream, New York</span></p>
+            <p className="flex items-center gap-2"><Mail className="h-4 w-4 text-magenta" /><span>info@ltuss.com</span></p>
+            <p className="flex items-center gap-2"><Phone className="h-4 w-4 text-magenta" /><span>+1 516-240-3877</span></p>
           </div>
         </div>
 
