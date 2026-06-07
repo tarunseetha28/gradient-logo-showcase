@@ -11,6 +11,11 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { SiteHeader } from "@/components/site/SiteHeader";
+import { SiteFooter } from "@/components/site/SiteFooter";
+import { ChatWidget } from "@/components/site/ChatWidget";
+import { CookieBanner } from "@/components/site/CookieBanner";
+import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
   return (
@@ -77,19 +82,38 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "LTUSS — Advisory, Staffing & Technology Solutions" },
+      { name: "description", content: "LTUSS is a global advisory, staffing, and technology solutions partner helping organizations navigate risk, growth, and digital transformation." },
+      { name: "author", content: "LTUSS" },
+      { property: "og:site_name", content: "LTUSS" },
+      { property: "og:title", content: "LTUSS — Advisory, Staffing & Technology Solutions" },
+      { property: "og:description", content: "Empowering growth through advisory, staffing, and enterprise-grade technology solutions." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "LTUSS — Advisory, Staffing & Technology Solutions" },
+      { name: "twitter:description", content: "Empowering growth through advisory, staffing, and technology." },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", href: "https://ltuss.vercel.app/assets/newlogo-qt8VpAm5.png" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" },
+    ],
+    scripts: [
       {
-        rel: "stylesheet",
-        href: appCss,
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "LTUSS",
+          url: "https://ltuss.vercel.app",
+          logo: "https://ltuss.vercel.app/assets/newlogo-qt8VpAm5.png",
+          description: "Advisory, Staffing, and Technology Solutions",
+          address: { "@type": "PostalAddress", addressLocality: "Valley Stream", addressRegion: "NY", addressCountry: "US" },
+          telephone: "+1-516-240-3877",
+          email: "info@ltuss.com",
+        }),
       },
     ],
   }),
@@ -118,8 +142,16 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <div className="flex min-h-screen flex-col">
+        <SiteHeader />
+        <main className="flex-1">
+          <Outlet />
+        </main>
+        <SiteFooter />
+        <ChatWidget />
+        <CookieBanner />
+        <Toaster richColors position="top-center" />
+      </div>
     </QueryClientProvider>
   );
 }
