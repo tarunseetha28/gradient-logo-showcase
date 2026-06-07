@@ -20,7 +20,7 @@ const serviceLinks = [
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-[#edcbf2] backdrop-blur-xl">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link to="/" className="flex items-center" aria-label="LTUSS home">
           <Logo className="h-12 w-auto sm:h-14" priority />
@@ -61,7 +61,7 @@ export function SiteHeader() {
               >
                 {item.label}
               </Link>
-            )
+            ),
           )}
         </nav>
 
@@ -83,7 +83,9 @@ export function SiteHeader() {
         </button>
       </div>
 
-      <div className={cn("border-t border-border bg-background lg:hidden", open ? "block" : "hidden")}>
+      <div
+        className={cn("border-t border-border bg-background lg:hidden", open ? "block" : "hidden")}
+      >
         <div className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4">
           {nav.map((item) => (
             <Link
