@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Section, FadeIn, Eyebrow } from "@/components/site/Section";
 import { GlobeIcon, SparkIcon } from "@/components/site/Icons3D";
 import { Search, Handshake, Lightbulb, Rocket } from "lucide-react";
+import aboutImg from "@/assets/about.jpg.asset.json";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
