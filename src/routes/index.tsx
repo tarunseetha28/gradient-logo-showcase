@@ -4,6 +4,13 @@ import { ArrowRight, Check, Compass, Sparkles } from "lucide-react";
 import { Section, FadeIn, Eyebrow } from "@/components/site/Section";
 import { AdvisoryIcon, StaffingIcon, TechIcon, ShieldIcon, GlobeIcon, SparkIcon } from "@/components/site/Icons3D";
 import { Logo } from "@/components/site/Logo";
+import heroImg from "@/assets/hero.jpg.asset.json";
+import advisoryImg from "@/assets/advisory.jpg.asset.json";
+import staffingImg from "@/assets/staffing.jpg.asset.json";
+import techImg from "@/assets/tech.jpg.asset.json";
+import riskImg from "@/assets/risk.jpg.asset.json";
+
+const serviceImages = [advisoryImg.url, staffingImg.url, techImg.url];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -90,23 +97,32 @@ function HomePage() {
               </div>
             </div>
 
-            {/* Logo showcase card */}
+            {/* Hero image showcase */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.9, delay: 0.1 }}
               className="relative"
             >
-              <div className="relative mx-auto aspect-square w-full max-w-md">
-                <div className="absolute inset-0 rounded-[3rem] bg-gradient-brand opacity-90 blur-2xl" />
-                <div className="relative grid h-full place-items-center rounded-[2.5rem] border border-white/40 bg-white/80 p-10 shadow-brand backdrop-blur-xl">
+              <div className="relative mx-auto aspect-[4/5] w-full max-w-md">
+                <div className="absolute -inset-4 rounded-[3rem] bg-gradient-brand opacity-60 blur-2xl" />
+                <div className="relative h-full overflow-hidden rounded-[2.5rem] border border-white/40 shadow-brand">
+                  <img
+                    src={heroImg.url}
+                    alt="LTUSS business advisor"
+                    width={1024}
+                    height={1280}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="absolute -top-6 -right-6 grid h-24 w-24 place-items-center rounded-2xl bg-white p-3 shadow-pink">
                   <Logo className="w-full" priority />
-                  <div className="absolute -top-6 -right-6 grid h-20 w-20 place-items-center rounded-2xl bg-white shadow-pink">
-                    <SparkIcon className="h-12 w-12" />
-                  </div>
-                  <div className="absolute -bottom-6 -left-6 grid h-20 w-20 place-items-center rounded-2xl bg-white shadow-soft">
-                    <GlobeIcon className="h-12 w-12" />
-                  </div>
+                </div>
+                <div className="absolute -bottom-6 -left-6 grid h-20 w-20 place-items-center rounded-2xl bg-white shadow-soft">
+                  <SparkIcon className="h-12 w-12" />
+                </div>
+                <div className="absolute -bottom-6 right-8 grid h-16 w-16 place-items-center rounded-2xl bg-white shadow-soft">
+                  <GlobeIcon className="h-10 w-10" />
                 </div>
               </div>
             </motion.div>
@@ -149,15 +165,29 @@ function HomePage() {
             <FadeIn key={s.title} delay={i * 0.1}>
               <Link
                 to={s.to}
-                className="group relative block h-full overflow-hidden rounded-3xl border border-border bg-card p-8 shadow-soft transition hover:-translate-y-1 hover:shadow-brand"
+                className="group relative block h-full overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition hover:-translate-y-1 hover:shadow-brand"
               >
-                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-brand" />
-                <s.Icon className="h-20 w-20" />
-                <h3 className="mt-6 text-xl font-semibold">{s.title}</h3>
-                <p className="mt-3 text-sm text-foreground/70">{s.desc}</p>
-                <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-magenta">
-                  Learn more <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-                </span>
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  <img
+                    src={serviceImages[i]}
+                    alt={s.title}
+                    loading="lazy"
+                    width={1024}
+                    height={640}
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                  <div className="absolute bottom-3 left-3 grid h-14 w-14 place-items-center rounded-2xl bg-white/95 shadow-pink">
+                    <s.Icon className="h-10 w-10" />
+                  </div>
+                </div>
+                <div className="p-7">
+                  <h3 className="text-xl font-semibold">{s.title}</h3>
+                  <p className="mt-3 text-sm text-foreground/70">{s.desc}</p>
+                  <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-magenta">
+                    Learn more <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+                  </span>
+                </div>
               </Link>
             </FadeIn>
           ))}
@@ -199,27 +229,43 @@ function HomePage() {
       <Section className="pt-0">
         <div className="grid gap-6 lg:grid-cols-2">
           <FadeIn>
-            <Link to="/services/risk-compliance" className="group relative block h-full overflow-hidden rounded-3xl border border-border bg-card p-8 shadow-soft transition hover:-translate-y-1 hover:shadow-brand">
-              <ShieldIcon className="h-20 w-20" />
-              <h3 className="mt-6 text-2xl font-semibold">Risk &amp; Compliance Advisory</h3>
-              <p className="mt-3 text-foreground/70">
-                Enterprise Risk Management, governance frameworks, regulatory alignment, and operational resilience.
-              </p>
-              <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-magenta">
-                Explore Risk &amp; Compliance <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-              </span>
+            <Link to="/services/risk-compliance" className="group relative block h-full overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition hover:-translate-y-1 hover:shadow-brand">
+              <div className="relative aspect-[16/9] overflow-hidden">
+                <img src={riskImg.url} alt="Risk & compliance advisory" loading="lazy" width={1280} height={720} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                <div className="absolute bottom-3 left-3 grid h-14 w-14 place-items-center rounded-2xl bg-white/95 shadow-pink">
+                  <ShieldIcon className="h-10 w-10" />
+                </div>
+              </div>
+              <div className="p-8">
+                <h3 className="text-2xl font-semibold">Risk &amp; Compliance Advisory</h3>
+                <p className="mt-3 text-foreground/70">
+                  Enterprise Risk Management, governance frameworks, regulatory alignment, and operational resilience.
+                </p>
+                <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-magenta">
+                  Explore Risk &amp; Compliance <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+                </span>
+              </div>
             </Link>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <Link to="/services/tprm" className="group relative block h-full overflow-hidden rounded-3xl border border-border bg-card p-8 shadow-soft transition hover:-translate-y-1 hover:shadow-brand">
-              <GlobeIcon className="h-20 w-20" />
-              <h3 className="mt-6 text-2xl font-semibold">Third-Party Risk (TPRM)</h3>
-              <p className="mt-3 text-foreground/70">
-                Tiering, due diligence, backlog remediation, and ongoing monitoring frameworks for vendor risk.
-              </p>
-              <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-magenta">
-                Explore TPRM <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-              </span>
+            <Link to="/services/tprm" className="group relative block h-full overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition hover:-translate-y-1 hover:shadow-brand">
+              <div className="relative aspect-[16/9] overflow-hidden">
+                <img src={staffingImg.url} alt="Third-party risk management" loading="lazy" width={1280} height={720} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                <div className="absolute bottom-3 left-3 grid h-14 w-14 place-items-center rounded-2xl bg-white/95 shadow-pink">
+                  <GlobeIcon className="h-10 w-10" />
+                </div>
+              </div>
+              <div className="p-8">
+                <h3 className="text-2xl font-semibold">Third-Party Risk (TPRM)</h3>
+                <p className="mt-3 text-foreground/70">
+                  Tiering, due diligence, backlog remediation, and ongoing monitoring frameworks for vendor risk.
+                </p>
+                <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-magenta">
+                  Explore TPRM <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+                </span>
+              </div>
             </Link>
           </FadeIn>
         </div>

@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Section, FadeIn, Eyebrow } from "@/components/site/Section";
 import { GlobeIcon, SparkIcon } from "@/components/site/Icons3D";
 import { Search, Handshake, Lightbulb, Rocket } from "lucide-react";
+import aboutImg from "@/assets/about.jpg.asset.json";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -31,14 +32,22 @@ function AboutPage() {
       <section className="relative overflow-hidden bg-gradient-brand-soft">
         <div className="absolute -top-20 -left-20 h-80 w-80 rounded-full bg-magenta/30 blur-3xl" />
         <div className="absolute -bottom-20 -right-20 h-80 w-80 rounded-full bg-royal/30 blur-3xl" />
-        <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
-          <Eyebrow>About LTUSS</Eyebrow>
-          <h1 className="mt-5 max-w-3xl text-4xl font-bold sm:text-5xl lg:text-6xl">
-            Insights, talent, and <span className="text-gradient-brand">technology</span> — delivered with purpose.
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg text-foreground/70">
-            A global advisory and solutions provider committed to measurable impact for individuals, businesses, and organizations.
-          </p>
+        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 py-24 sm:px-6 lg:grid-cols-2 lg:px-8">
+          <div>
+            <Eyebrow>About LTUSS</Eyebrow>
+            <h1 className="mt-5 text-4xl font-bold sm:text-5xl lg:text-6xl">
+              Insights, talent, and <span className="text-gradient-brand">technology</span> — delivered with purpose.
+            </h1>
+            <p className="mt-6 max-w-xl text-lg text-foreground/70">
+              A global advisory and solutions provider committed to measurable impact for individuals, businesses, and organizations.
+            </p>
+          </div>
+          <div className="relative">
+            <div className="absolute -inset-4 rounded-[2.5rem] bg-gradient-brand opacity-50 blur-2xl" />
+            <div className="relative overflow-hidden rounded-[2rem] border border-white/40 shadow-brand">
+              <img src={aboutImg.url} alt="LTUSS team" width={1280} height={960} className="h-full w-full object-cover" />
+            </div>
+          </div>
         </div>
       </section>
 
