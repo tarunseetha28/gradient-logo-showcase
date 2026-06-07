@@ -2,15 +2,22 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Section, FadeIn, Eyebrow } from "@/components/site/Section";
 import { GlobeIcon, SparkIcon } from "@/components/site/Icons3D";
 import { Search, Handshake, Lightbulb, Rocket } from "lucide-react";
-import aboutImg from "@/assets/about.jpg.asset.json";
+import aboutImg from "@/assets/about.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "About LTUSS — Mission, Vision & Approach" },
-      { name: "description", content: "LTUSS empowers organizations with insights, talent, and technology to achieve sustainable growth through a proven Discover → Engage → Solve → Execute framework." },
+      {
+        name: "description",
+        content:
+          "LTUSS empowers organizations with insights, talent, and technology to achieve sustainable growth through a proven Discover → Engage → Solve → Execute framework.",
+      },
       { property: "og:title", content: "About LTUSS" },
-      { property: "og:description", content: "Our mission, vision, and structured engagement approach." },
+      {
+        property: "og:description",
+        content: "Our mission, vision, and structured engagement approach.",
+      },
       { property: "og:url", content: "/about" },
     ],
     links: [{ rel: "canonical", href: "/about" }],
@@ -20,7 +27,11 @@ export const Route = createFileRoute("/about")({
 
 const steps = [
   { Icon: Search, title: "Discover", desc: "Understand your needs, context, and goals." },
-  { Icon: Handshake, title: "Engage", desc: "Align strategies with your objectives and stakeholders." },
+  {
+    Icon: Handshake,
+    title: "Engage",
+    desc: "Align strategies with your objectives and stakeholders.",
+  },
   { Icon: Lightbulb, title: "Solve", desc: "Deliver tailored, evidence-based solutions." },
   { Icon: Rocket, title: "Execute", desc: "Implement, monitor, and support successful outcomes." },
 ];
@@ -36,16 +47,24 @@ function AboutPage() {
           <div>
             <Eyebrow>About LTUSS</Eyebrow>
             <h1 className="mt-5 text-4xl font-bold sm:text-5xl lg:text-6xl">
-              Insights, talent, and <span className="text-gradient-brand">technology</span> — delivered with purpose.
+              Insights, talent, and <span className="text-gradient-brand">technology</span> —
+              delivered with purpose.
             </h1>
             <p className="mt-6 max-w-xl text-lg text-foreground/70">
-              A global advisory and solutions provider committed to measurable impact for individuals, businesses, and organizations.
+              A global advisory and solutions provider committed to measurable impact for
+              individuals, businesses, and organizations.
             </p>
           </div>
           <div className="relative">
             <div className="absolute -inset-4 rounded-[2.5rem] bg-gradient-brand opacity-50 blur-2xl" />
             <div className="relative overflow-hidden rounded-[2rem] border border-white/40 shadow-brand">
-              <img src={aboutImg.url} alt="LTUSS team" width={1280} height={960} className="h-full w-full object-cover" />
+              <img
+                src={aboutImg}
+                alt="LTUSS team"
+                width={1280}
+                height={960}
+                className="h-full w-full object-cover"
+              />
             </div>
           </div>
         </div>
@@ -59,8 +78,8 @@ function AboutPage() {
               <SparkIcon className="h-16 w-16" />
               <h2 className="mt-6 text-2xl font-bold">Our Mission</h2>
               <p className="mt-4 text-foreground/75">
-                To empower individuals and organizations with the insights, talent, and technology needed
-                to achieve sustainable growth and global success.
+                To empower individuals and organizations with the insights, talent, and technology
+                needed to achieve sustainable growth and global success.
               </p>
             </div>
           </FadeIn>
@@ -69,8 +88,8 @@ function AboutPage() {
               <GlobeIcon className="h-16 w-16" />
               <h2 className="mt-6 text-2xl font-bold">Our Vision</h2>
               <p className="mt-4 text-white/90">
-                To be a trusted global partner delivering innovative advisory, staffing, and technology
-                solutions that drive measurable impact.
+                To be a trusted global partner delivering innovative advisory, staffing, and
+                technology solutions that drive measurable impact.
               </p>
             </div>
           </FadeIn>

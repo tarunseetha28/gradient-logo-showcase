@@ -2,23 +2,38 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { ArrowRight, Check, Compass, Sparkles } from "lucide-react";
 import { Section, FadeIn, Eyebrow } from "@/components/site/Section";
-import { AdvisoryIcon, StaffingIcon, TechIcon, ShieldIcon, GlobeIcon, SparkIcon } from "@/components/site/Icons3D";
+import {
+  AdvisoryIcon,
+  StaffingIcon,
+  TechIcon,
+  ShieldIcon,
+  GlobeIcon,
+  SparkIcon,
+} from "@/components/site/Icons3D";
 import { Logo } from "@/components/site/Logo";
-import heroImg from "@/assets/hero.jpg.asset.json";
-import advisoryImg from "@/assets/advisory.jpg.asset.json";
-import staffingImg from "@/assets/staffing.jpg.asset.json";
-import techImg from "@/assets/tech.jpg.asset.json";
-import riskImg from "@/assets/risk.jpg.asset.json";
+import heroImg from "@/assets/hero.jpg";
+import advisoryImg from "@/assets/advisory.jpg";
+import staffingImg from "@/assets/staffing.jpg";
+import techImg from "@/assets/tech.jpg";
+import riskImg from "@/assets/risk.jpg";
 
-const serviceImages = [advisoryImg.url, staffingImg.url, techImg.url];
+const serviceImages = [advisoryImg, staffingImg, techImg];
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "LTUSS — Advisory, Staffing & Technology Solutions" },
-      { name: "description", content: "Empowering growth through advisory, staffing, and enterprise technology. LTUSS helps individuals and organizations succeed locally and internationally." },
+      {
+        name: "description",
+        content:
+          "Empowering growth through advisory, staffing, and enterprise technology. LTUSS helps individuals and organizations succeed locally and internationally.",
+      },
       { property: "og:title", content: "LTUSS — Advisory, Staffing & Technology" },
-      { property: "og:description", content: "Empowering growth through advisory, staffing, and enterprise-grade technology solutions." },
+      {
+        property: "og:description",
+        content:
+          "Empowering growth through advisory, staffing, and enterprise-grade technology solutions.",
+      },
       { property: "og:url", content: "/" },
     ],
     links: [{ rel: "canonical", href: "/" }],
@@ -27,9 +42,24 @@ export const Route = createFileRoute("/")({
 });
 
 const services = [
-  { Icon: AdvisoryIcon, title: "Professional & Advisory", desc: "Strategic guidance for individuals and organizations across education, relocation, and business growth.", to: "/services" as const },
-  { Icon: StaffingIcon, title: "Staffing Solutions", desc: "Access global talent for contract, permanent, or project-based workforce needs.", to: "/services" as const },
-  { Icon: TechIcon, title: "Technology Solutions", desc: "Custom platforms, automation, and enterprise system support to drive efficiency and scale.", to: "/services" as const },
+  {
+    Icon: AdvisoryIcon,
+    title: "Professional & Advisory",
+    desc: "Strategic guidance for individuals and organizations across education, relocation, and business growth.",
+    to: "/services" as const,
+  },
+  {
+    Icon: StaffingIcon,
+    title: "Staffing Solutions",
+    desc: "Access global talent for contract, permanent, or project-based workforce needs.",
+    to: "/services" as const,
+  },
+  {
+    Icon: TechIcon,
+    title: "Technology Solutions",
+    desc: "Custom platforms, automation, and enterprise system support to drive efficiency and scale.",
+    to: "/services" as const,
+  },
 ];
 
 const why = [
@@ -73,7 +103,8 @@ function HomePage() {
                 className="mt-6 max-w-xl text-lg text-foreground/70"
               >
                 LTUSS helps individuals, businesses, and organizations navigate complex challenges
-                with expert advisory services, global staffing, and enterprise-grade technology platforms.
+                with expert advisory services, global staffing, and enterprise-grade technology
+                platforms.
               </motion.p>
 
               <motion.div
@@ -82,18 +113,30 @@ function HomePage() {
                 transition={{ duration: 0.8, delay: 0.25 }}
                 className="mt-8 flex flex-wrap gap-3"
               >
-                <Link to="/contact" className="inline-flex h-12 items-center gap-2 rounded-full bg-gradient-brand px-7 text-sm font-semibold text-white shadow-pink transition hover:scale-[1.02]">
+                <Link
+                  to="/contact"
+                  className="inline-flex h-12 items-center gap-2 rounded-full bg-gradient-brand px-7 text-sm font-semibold text-white shadow-pink transition hover:scale-[1.02]"
+                >
                   Get Started <ArrowRight className="h-4 w-4" />
                 </Link>
-                <Link to="/contact" className="inline-flex h-12 items-center gap-2 rounded-full border border-border bg-white/70 px-7 text-sm font-semibold text-foreground backdrop-blur transition hover:bg-white">
+                <Link
+                  to="/contact"
+                  className="inline-flex h-12 items-center gap-2 rounded-full border border-border bg-white/70 px-7 text-sm font-semibold text-foreground backdrop-blur transition hover:bg-white"
+                >
                   Schedule a Consultation
                 </Link>
               </motion.div>
 
               <div className="mt-10 flex items-center gap-6 text-xs text-foreground/60">
-                <div className="flex items-center gap-2"><Check className="h-4 w-4 text-magenta" /> Global delivery</div>
-                <div className="flex items-center gap-2"><Check className="h-4 w-4 text-magenta" /> Enterprise-ready</div>
-                <div className="flex items-center gap-2"><Check className="h-4 w-4 text-magenta" /> SEO-optimized</div>
+                <div className="flex items-center gap-2">
+                  <Check className="h-4 w-4 text-magenta" /> Global delivery
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check className="h-4 w-4 text-magenta" /> Enterprise-ready
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check className="h-4 w-4 text-magenta" /> SEO-optimized
+                </div>
               </div>
             </div>
 
@@ -108,7 +151,7 @@ function HomePage() {
                 <div className="absolute -inset-4 rounded-[3rem] bg-gradient-brand opacity-60 blur-2xl" />
                 <div className="relative h-full overflow-hidden rounded-[2.5rem] border border-white/40 shadow-brand">
                   <img
-                    src={heroImg.url}
+                    src={heroImg}
                     alt="LTUSS business advisor"
                     width={1024}
                     height={1280}
@@ -136,14 +179,16 @@ function HomePage() {
           <FadeIn className="lg:col-span-2">
             <Eyebrow>Who we are</Eyebrow>
             <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
-              A trusted global partner for <span className="text-gradient-brand">integrated solutions</span>.
+              A trusted global partner for{" "}
+              <span className="text-gradient-brand">integrated solutions</span>.
             </h2>
           </FadeIn>
           <FadeIn delay={0.1} className="lg:col-span-3">
             <p className="text-lg text-foreground/70">
-              LTUSS is a global advisory and solutions provider delivering integrated services across
-              education, business, career development, risk management, and enterprise technology.
-              We combine insights, talent, and innovation to help our clients succeed locally and internationally.
+              LTUSS is a global advisory and solutions provider delivering integrated services
+              across education, business, career development, risk management, and enterprise
+              technology. We combine insights, talent, and innovation to help our clients succeed
+              locally and internationally.
             </p>
           </FadeIn>
         </div>
@@ -185,7 +230,8 @@ function HomePage() {
                   <h3 className="text-xl font-semibold">{s.title}</h3>
                   <p className="mt-3 text-sm text-foreground/70">{s.desc}</p>
                   <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-magenta">
-                    Learn more <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+                    Learn more{" "}
+                    <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
                   </span>
                 </div>
               </Link>
@@ -208,13 +254,17 @@ function HomePage() {
                 Built on a proven framework: Discover → Engage → Solve → Execute.
               </h2>
               <p className="mt-5 max-w-md text-white/85">
-                We bring rigor and clarity to every engagement — from first conversation through long-term support.
+                We bring rigor and clarity to every engagement — from first conversation through
+                long-term support.
               </p>
             </FadeIn>
             <FadeIn delay={0.1}>
               <ul className="grid gap-4 sm:grid-cols-2">
                 {why.map((w) => (
-                  <li key={w} className="flex items-start gap-3 rounded-2xl bg-white/10 p-4 backdrop-blur">
+                  <li
+                    key={w}
+                    className="flex items-start gap-3 rounded-2xl bg-white/10 p-4 backdrop-blur"
+                  >
                     <Compass className="mt-0.5 h-5 w-5 shrink-0" />
                     <span className="text-sm font-medium">{w}</span>
                   </li>
@@ -229,9 +279,19 @@ function HomePage() {
       <Section className="pt-0">
         <div className="grid gap-6 lg:grid-cols-2">
           <FadeIn>
-            <Link to="/services/risk-compliance" className="group relative block h-full overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition hover:-translate-y-1 hover:shadow-brand">
+            <Link
+              to="/services/risk-compliance"
+              className="group relative block h-full overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition hover:-translate-y-1 hover:shadow-brand"
+            >
               <div className="relative aspect-[16/9] overflow-hidden">
-                <img src={riskImg.url} alt="Risk & compliance advisory" loading="lazy" width={1280} height={720} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                <img
+                  src={riskImg}
+                  alt="Risk & compliance advisory"
+                  loading="lazy"
+                  width={1280}
+                  height={720}
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                 <div className="absolute bottom-3 left-3 grid h-14 w-14 place-items-center rounded-2xl bg-white/95 shadow-pink">
                   <ShieldIcon className="h-10 w-10" />
@@ -240,18 +300,30 @@ function HomePage() {
               <div className="p-8">
                 <h3 className="text-2xl font-semibold">Risk &amp; Compliance Advisory</h3>
                 <p className="mt-3 text-foreground/70">
-                  Enterprise Risk Management, governance frameworks, regulatory alignment, and operational resilience.
+                  Enterprise Risk Management, governance frameworks, regulatory alignment, and
+                  operational resilience.
                 </p>
                 <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-magenta">
-                  Explore Risk &amp; Compliance <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+                  Explore Risk &amp; Compliance{" "}
+                  <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
                 </span>
               </div>
             </Link>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <Link to="/services/tprm" className="group relative block h-full overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition hover:-translate-y-1 hover:shadow-brand">
+            <Link
+              to="/services/tprm"
+              className="group relative block h-full overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition hover:-translate-y-1 hover:shadow-brand"
+            >
               <div className="relative aspect-[16/9] overflow-hidden">
-                <img src={staffingImg.url} alt="Third-party risk management" loading="lazy" width={1280} height={720} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                <img
+                  src={staffingImg}
+                  alt="Third-party risk management"
+                  loading="lazy"
+                  width={1280}
+                  height={720}
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                 <div className="absolute bottom-3 left-3 grid h-14 w-14 place-items-center rounded-2xl bg-white/95 shadow-pink">
                   <GlobeIcon className="h-10 w-10" />
@@ -260,10 +332,12 @@ function HomePage() {
               <div className="p-8">
                 <h3 className="text-2xl font-semibold">Third-Party Risk (TPRM)</h3>
                 <p className="mt-3 text-foreground/70">
-                  Tiering, due diligence, backlog remediation, and ongoing monitoring frameworks for vendor risk.
+                  Tiering, due diligence, backlog remediation, and ongoing monitoring frameworks for
+                  vendor risk.
                 </p>
                 <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-magenta">
-                  Explore TPRM <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+                  Explore TPRM{" "}
+                  <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
                 </span>
               </div>
             </Link>
@@ -276,14 +350,23 @@ function HomePage() {
         <FadeIn>
           <div className="rounded-[2.5rem] border border-border bg-card p-10 text-center shadow-soft sm:p-16">
             <h2 className="mx-auto max-w-2xl text-3xl font-bold sm:text-4xl">
-              Ready to transform your goals into <span className="text-gradient-brand">results</span>?
+              Ready to transform your goals into{" "}
+              <span className="text-gradient-brand">results</span>?
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-foreground/70">Let LTUSS guide your journey.</p>
+            <p className="mx-auto mt-4 max-w-xl text-foreground/70">
+              Let LTUSS guide your journey.
+            </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <Link to="/contact" className="inline-flex h-12 items-center gap-2 rounded-full bg-gradient-brand px-7 text-sm font-semibold text-white shadow-pink">
+              <Link
+                to="/contact"
+                className="inline-flex h-12 items-center gap-2 rounded-full bg-gradient-brand px-7 text-sm font-semibold text-white shadow-pink"
+              >
                 Schedule a Consultation <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link to="/services" className="inline-flex h-12 items-center rounded-full border border-border px-7 text-sm font-semibold">
+              <Link
+                to="/services"
+                className="inline-flex h-12 items-center rounded-full border border-border px-7 text-sm font-semibold"
+              >
                 View Services
               </Link>
             </div>
