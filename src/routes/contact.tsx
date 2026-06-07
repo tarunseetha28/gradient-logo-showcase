@@ -11,7 +11,11 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact LTUSS — Advisory, Staffing & Technology" },
-      { name: "description", content: "Reach LTUSS for advisory, staffing, and technology solutions. Based in Valley Stream, NY — serving clients globally. We respond within 24–48 hours." },
+      {
+        name: "description",
+        content:
+          "Reach LTUSS for advisory, staffing, and technology solutions. Based in Valley Stream, NY — serving clients globally. We respond within 24–48 hours.",
+      },
       { property: "og:title", content: "Contact LTUSS" },
       { property: "og:description", content: "Get in touch with our advisory team." },
       { property: "og:url", content: "/contact" },
@@ -44,7 +48,12 @@ const services = [
 
 function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
-  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<FormData>({
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<FormData>({
     resolver: zodResolver(schema),
     defaultValues: { service: "" },
   });
@@ -78,20 +87,37 @@ function ContactPage() {
             <h2 className="text-2xl font-semibold">Get in touch</h2>
             <p className="mt-3 text-foreground/70">We typically respond within 24–48 hours.</p>
             <div className="mt-8 space-y-5">
-              <InfoRow icon={<MapPin className="h-5 w-5" />} title="Location" value="Valley Stream, New York" />
-              <InfoRow icon={<Mail className="h-5 w-5" />} title="Email" value="info@ltuss.com" href="mailto:info@ltuss.com" />
-              <InfoRow icon={<Phone className="h-5 w-5" />} title="Phone" value="+1 516-240-3877" href="tel:+15162403877" />
+              <InfoRow
+                icon={<MapPin className="h-5 w-5" />}
+                title="Location"
+                value="Valley Stream, New York"
+              />
+              <InfoRow
+                icon={<Mail className="h-5 w-5" />}
+                title="Email"
+                value="info@ltuss.com"
+                href="mailto:info@ltuss.com"
+              />
+              <InfoRow
+                icon={<Phone className="h-5 w-5" />}
+                title="Phone"
+                value="+1 516-240-3877"
+                href="tel:+15162403877"
+              />
             </div>
-            <div className="mt-10 rounded-2xl bg-gradient-brand p-6 text-white shadow-brand">
+            {/* <div className="mt-10 rounded-2xl bg-gradient-brand p-6 text-white shadow-brand">
               <p className="text-sm font-semibold uppercase tracking-wider opacity-80">Auto-response</p>
               <p className="mt-2 text-sm text-white/95">
                 "Thank you for contacting LTUSS. Our team will respond within 24–48 hours."
               </p>
-            </div>
+            </div> */}
           </FadeIn>
 
           <FadeIn delay={0.1} className="lg:col-span-3">
-            <form onSubmit={handleSubmit(onSubmit)} className="rounded-3xl border border-border bg-card p-6 shadow-soft sm:p-8">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="rounded-3xl border border-border bg-card p-6 shadow-soft sm:p-8"
+            >
               {submitted && (
                 <div className="mb-6 rounded-xl bg-gradient-brand-soft p-4 text-sm">
                   ✓ Inquiry received. We'll be in touch shortly.
@@ -102,30 +128,62 @@ function ContactPage() {
                 <input {...register("name")} className={inputCls} placeholder="Jane Doe" />
               </Field>
               <Field label="Email" error={errors.email?.message}>
-                <input type="email" {...register("email")} className={inputCls} placeholder="you@company.com" />
+                <input
+                  type="email"
+                  {...register("email")}
+                  className={inputCls}
+                  placeholder="you@company.com"
+                />
               </Field>
               <Field label="Phone (optional)" error={errors.phone?.message}>
-                <input type="tel" {...register("phone")} className={inputCls} placeholder="+1 555 123 4567" />
+                <input
+                  type="tel"
+                  {...register("phone")}
+                  className={inputCls}
+                  placeholder="+1 555 123 4567"
+                />
               </Field>
               <Field label="Service of interest" error={errors.service?.message}>
                 <select {...register("service")} className={inputCls}>
                   <option value="">Select a service…</option>
-                  {services.map((s) => <option key={s} value={s}>{s}</option>)}
+                  {services.map((s) => (
+                    <option key={s} value={s}>
+                      {s}
+                    </option>
+                  ))}
                 </select>
               </Field>
               <Field label="Message" error={errors.message?.message}>
-                <textarea {...register("message")} rows={5} className={inputCls + " resize-y"} placeholder="Tell us about your goals…" />
+                <textarea
+                  {...register("message")}
+                  rows={5}
+                  className={inputCls + " resize-y"}
+                  placeholder="Tell us about your goals…"
+                />
               </Field>
 
               {/* honeypot */}
-              <input type="text" tabIndex={-1} autoComplete="off" {...register("website")} className="hidden" aria-hidden />
+              <input
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                {...register("website")}
+                className="hidden"
+                aria-hidden
+              />
 
               <button
                 type="submit"
                 disabled={isSubmitting}
                 className="mt-2 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-gradient-brand px-7 text-sm font-semibold text-white shadow-pink transition hover:scale-[1.01] disabled:opacity-60"
               >
-                {isSubmitting ? "Submitting…" : <>Submit Inquiry <Send className="h-4 w-4" /></>}
+                {isSubmitting ? (
+                  "Submitting…"
+                ) : (
+                  <>
+                    Submit Inquiry <Send className="h-4 w-4" />
+                  </>
+                )}
               </button>
               <p className="mt-3 text-center text-xs text-foreground/60">
                 Submitted securely over HTTPS. We respect your privacy.
@@ -138,9 +196,18 @@ function ContactPage() {
   );
 }
 
-const inputCls = "mt-2 h-12 w-full rounded-xl border border-border bg-background px-4 text-sm outline-none transition focus:border-magenta focus:ring-2 focus:ring-magenta/20";
+const inputCls =
+  "mt-2 h-12 w-full rounded-xl border border-border bg-background px-4 text-sm outline-none transition focus:border-magenta focus:ring-2 focus:ring-magenta/20";
 
-function Field({ label, error, children }: { label: string; error?: string; children: React.ReactNode }) {
+function Field({
+  label,
+  error,
+  children,
+}: {
+  label: string;
+  error?: string;
+  children: React.ReactNode;
+}) {
   return (
     <div className="mb-4">
       <label className="text-sm font-medium text-foreground/85">{label}</label>
@@ -150,10 +217,22 @@ function Field({ label, error, children }: { label: string; error?: string; chil
   );
 }
 
-function InfoRow({ icon, title, value, href }: { icon: React.ReactNode; title: string; value: string; href?: string }) {
+function InfoRow({
+  icon,
+  title,
+  value,
+  href,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  value: string;
+  href?: string;
+}) {
   const inner = (
     <div className="flex items-start gap-4 rounded-2xl border border-border bg-card p-4 shadow-soft transition hover:-translate-y-0.5 hover:shadow-brand">
-      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gradient-brand text-white">{icon}</div>
+      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gradient-brand text-white">
+        {icon}
+      </div>
       <div>
         <p className="text-xs font-semibold uppercase tracking-wider text-foreground/60">{title}</p>
         <p className="mt-1 text-sm font-medium text-foreground">{value}</p>
